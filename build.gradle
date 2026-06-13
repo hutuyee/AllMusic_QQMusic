@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group = 'ds.haaa'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly "com.google.code.gson:gson:2.14.0"
+    compileOnly("net.kyori:adventure-text-minimessage:4.26.1")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
