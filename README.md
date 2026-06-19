@@ -89,7 +89,7 @@ build/libs/AllMusic_QQMusic-1.0.0.jar
 将构建生成的 jar 文件放入 AllMusic3 对应的外置 API / netapi 加载目录中。
 
 ```text
-qqmusic-ds-haaa-1.0.0.jar
+AllMusic_QQMusic-1.0.0.jar
 ```
 
 然后重启服务端或重新加载 AllMusic。
