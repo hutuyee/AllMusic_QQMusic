@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class NetiApiMain implements IMusicApi {
+public class QQMusicApiMain implements IMusicApi {
     private boolean isUpdate;
 
-    public NetiApiMain() {
+    public QQMusicApiMain() {
         QQMusicHttpClient.log("<yellow>正在初始化QQ音乐API");
     }
 
