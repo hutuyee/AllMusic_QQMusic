@@ -9,9 +9,11 @@ import com.coloryr.allmusic.server.core.objs.music.SearchPageObj;
 import com.coloryr.allmusic.server.core.objs.music.SongInfoObj;
 import com.coloryr.allmusic.server.core.saves.MusicListSave;
 
+import java.io.File;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -38,6 +40,10 @@ public class QQMusicApiMain implements IMusicApi {
 
     public QQMusicApiMain() {
         QQMusicHttpClient.log("<yellow>正在初始化QQ音乐API");
+    }
+
+    @Override
+    public void reload(File file) {
     }
 
     @Override
@@ -138,9 +144,9 @@ public class QQMusicApiMain implements IMusicApi {
     }
 
     @Override
-    public SearchPageObj search(String[] name, boolean isDefault) {
+    public SearchPageObj search(String[] name) {
         List<SearchMusicObj> resData = new ArrayList<>();
-        String keyword = joinKeyword(name, isDefault);
+        String keyword = joinKeyword(name);
         if (keyword.isEmpty()) {
             QQMusicHttpClient.log("<red>QQ音乐搜索关键字为空");
             return null;
@@ -235,12 +241,21 @@ public class QQMusicApiMain implements IMusicApi {
         return QQMusicClient.getPlayUrl(getMusicId(id));
     }
 
-    private static String joinKeyword(String[] name, boolean isDefault) {
+    @Override
+    public void command(Object sender, String name, String[] args) {
+    }
+
+    @Override
+    public List<String> tab(Object sender, String name, String[] args) {
+        return Collections.emptyList();
+    }
+
+    private static String joinKeyword(String[] name) {
         if (name == null || name.length == 0) {
             return "";
         }
         StringBuilder builder = new StringBuilder();
-        for (int i = isDefault ? 0 : 1; i < name.length; i++) {
+        for (int i = 0; i < name.length; i++) {
             if (name[i] != null && !name[i].trim().isEmpty()) {
                 builder.append(name[i].trim()).append(" ");
             }
